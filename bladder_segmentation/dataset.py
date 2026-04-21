@@ -137,6 +137,7 @@ class UltrasoundSegmentationDataset(Dataset):
 
         if self.return_paths:
             item["image_path"] = str(sample.image_path)
-            item["mask_path"] = str(sample.mask_path) if sample.mask_path else None
+            if sample.mask_path is not None:
+                item["mask_path"] = str(sample.mask_path)
 
         return item
